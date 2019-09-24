@@ -10,6 +10,10 @@ function _biome_exit
     set old_var $_biome_vars_old[$i]
     set cur_var $_biome_vars[$i]
 
+    if [ "$old_var" = "$cur_var" ]
+      continue
+    end
+
     # Handle sensitive variables
     if _biome_is_secret $vname
       set secret true

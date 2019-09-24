@@ -15,6 +15,12 @@ function _biome_enter
         set new_var $_biome_vars[$i]
 
         set -g _biome_vars_old $_biome_vars_old "$old_var"
+
+        if [ "$new_var" = "$old_var" ]
+          continue
+        end
+
+        # Set the actual variable!
         set -gx $vname $new_var
 
         # Handle sensitive variables
