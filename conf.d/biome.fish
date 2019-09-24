@@ -29,7 +29,7 @@ function _biome_is_secret
 end
 
 function _biome_mask
-  set mask_char ''
+  set mask_char ''
   set length (string length "$argv")
   set reveal_length 4
 
