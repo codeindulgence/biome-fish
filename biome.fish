@@ -1,19 +1,3 @@
-function _biome_color
-  set color $argv[1]
-  set string $argv[2]
-  echo (set_color $color)$string(set_color normal)
-end
-function _green; _biome_color green "$argv"; end
-function _red;   _biome_color red   "$argv"; end
-
-function _mask
-  echo '********'(string sub -s -4 $argv)
-end
-
-function _secret
-  string match -iqr '.*key|pass|secret.*' $argv
-end
-
 function biome
 
   if test "$argv[1]" = "enter"
@@ -35,16 +19,16 @@ function biome
           set -gx $vname $new_var
 
           # Handle sensitive variables
-          if _secret $vname
+          if _biome_is_secret $vname
             set secret true
-            set new_var (_mask $new_var)
+            set new_var (_biome_mask $new_var)
           else
             set secret false
           end
 
           if [ -n "$old_var" ]
             if $secret
-              set old_var (_mask $old_var)
+              set old_var (_biome_mask $old_var)
             end
             _red "- $vname: $old_var"
           end
@@ -73,9 +57,9 @@ function biome
       set cur_var $_biome_vars[$i]
 
       # Handle sensitive variables
-      if _secret $vname
+      if _biome_is_secret $vname
         set secret true
-        set cur_var (_mask $cur_var)
+        set cur_var (_biome_mask $cur_var)
       else
         set secret false
       end
@@ -84,7 +68,7 @@ function biome
       if [ -n $old_var ]
         set -gx $vname $old_var
         if $secret
-          set old_var (_mask $old_var)
+          set old_var (_biome_mask $old_var)
         end
         _green "+ $vname: $old_var"
       else
