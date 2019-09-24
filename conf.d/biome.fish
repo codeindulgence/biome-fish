@@ -1,17 +1,10 @@
 function _biome --on-variable PWD
-  if test -n "$_biome_loaded"
-    switch $PWD
-      case $_biome_loaded'*'
-        biome enter
+  if ! string match -qr "^$_biome_loaded" "$PWD"
+    biome exit
+  end
 
-      case '*'
-        biome exit
-
-    end
-  else
-    if [ -r .biome ]
-      biome enter $PWD
-    end
+  if [ -r .biome ]
+    biome enter
   end
 end
 
