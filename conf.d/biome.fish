@@ -3,8 +3,15 @@ function _biome --on-variable PWD
     biome exit
   end
 
-  if [ -r .biome ]
-    biome enter
+  set path $PWD
+
+  while [ "$path" != '/' ]
+    if [ -r $path/.biome ]
+      biome enter $path
+      break
+    else
+      set path (realpath "$path/..")
+    end
   end
 end
 

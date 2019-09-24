@@ -1,11 +1,11 @@
-function biome
+function biome -a direction path
 
-  if test "$argv[1]" = "enter"
-    _biome_enter
+  if test "$direction" = "enter"
+    _biome_enter $path
   end
 
 
-  if test "$argv" = "exit"
+  if test "$direction" = "exit"
     _biome_exit
   end
 
