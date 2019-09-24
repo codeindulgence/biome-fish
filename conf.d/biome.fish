@@ -1,4 +1,4 @@
-function _biome --on-variable PWD
+function _biome --on-event fish_prompt
   if ! string match -qr "^$_biome_loaded" "$PWD"
     biome exit
   end
