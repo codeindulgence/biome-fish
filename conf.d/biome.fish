@@ -1,7 +1,12 @@
+if not set -q _biome_auto; set -g _biome_auto true; end
 if not set -q _biome_mask_char; set -g _biome_mask_char '*'; end
 if not set -q _biome_filename; set -g _biome_filename '.biome'; end
 
 function _biome --on-event fish_prompt
+
+  if not $_biome_auto
+    return
+  end
 
   # If PWD is not the current biome or a subdirectory of it, then exit biome
   if not string match -qr "^$_biome_loaded" "$PWD"

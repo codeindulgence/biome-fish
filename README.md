@@ -141,6 +141,18 @@ Configure
 
 The following options can be changed using `set -g <option> <value>`
 
+- `_biome_auto`
+  - Sets biome to load variables automatically as you change directories. Set
+  to false for full manual mode and call `biome enter/exit` when you want. That
+  way you can load biomes from other directories.
+  - Default: `true`
+  - Example:
+    ```sh
+    set -g _biome_auto false
+    biome enter ~/myproject
+    biome exit
+    ```
+
 - `_biome_mask_char`
   - Sets the character used to mask sensitive values. Want something cool?
     Consider [Nerd Fonts][2]
