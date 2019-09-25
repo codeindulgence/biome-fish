@@ -2,20 +2,19 @@ function _biome_enter -a path
   set biome $path/.biome
   if [ -r $biome ]
     if [ (sha1sum $biome) != "$_biome_hash" ]
-      # Get the list of vars we're about to load
-      set -g _biome_vnames (sed -n 's/^export \([A-z0-9_-]*\)=.*/\1/p' $biome)
-      set -g _biome_vars   (sed -n 's/^export [A-z0-9_-]*=\(.*\)/\1/p' $biome)
 
-      # Now load .biome
       echo Entering biome: (basename $path)
 
-      # Save the old values if they exist
-      for i in (seq (count $_biome_vnames))
-        set vname $_biome_vnames[$i]
-        set old_var "$$vname"
-        set new_var $_biome_vars[$i]
+      cat $biome | while read line
+        set line (string split '=' $line)
 
-        set -g _biome_vars_old $_biome_vars_old "$old_var"
+        set vname $line[1]
+        set new_var $line[2]
+        set old_var "$$vname"
+
+        set -ga _biome_vnames "$vname"
+        set -ga _biome_vars "$new_var"
+        set -ga _biome_vars_old "$old_var"
 
         if [ "$new_var" = "$old_var" ]
           continue
