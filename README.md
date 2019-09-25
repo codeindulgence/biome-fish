@@ -24,7 +24,7 @@ Add your variables to a file named `.biome` in your project directory.
 
 ```sh
 mkdir ~/myproject
-echo "export MYVAR=myvalue" > ~/myproject/.biome
+echo "MYVAR=myvalue" > ~/myproject/.biome
 ```
 
 **Enter the biome!**
@@ -65,7 +65,7 @@ Entering biome: myproject
 
 ```sh
 cd ~
-export MYVAR=myoldvalue
+MYVAR=myoldvalue
 cd ~/myproject
 ```
 
@@ -88,9 +88,9 @@ Exiting boime: myproject
 **Guard your secrets!**
 
 ```sh
-echo export API_KEY=mysupersecretapikey0001 >> ~/myproject/.biome
-echo export DB_PASS=mysupersecretdbpass0002 >> ~/myproject/.biome
-echo export APP_SECRET=mysupersecretappsecret0003 >> ~/myproject/.biome
+echo API_KEY=mysupersecretapikey0001 >> ~/myproject/.biome
+echo DB_PASS=mysupersecretdbpass0002 >> ~/myproject/.biome
+echo APP_SECRET=mysupersecretappsecret0003 >> ~/myproject/.biome
 cd ~/myproject
 ```
 
@@ -107,7 +107,7 @@ Entering biome: myproject
 
 ```sh
 cd ~
-export API_KEY=mysupersecretapikey0004
+API_KEY=mysupersecretapikey0004
 cd ~/myproject
 ```
 

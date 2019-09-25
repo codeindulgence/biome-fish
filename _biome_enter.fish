@@ -8,6 +8,9 @@ function _biome_enter -a path
       cat $biome | while read line
         set line (string split '=' $line)
 
+        # Remove `export` statement if it is present
+        set line (string replace 'export ' '' $line)
+
         set vname $line[1]
         set new_var $line[2]
         set old_var "$$vname"
