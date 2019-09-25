@@ -147,6 +147,11 @@ The following options can be changed using `set -g <option> <value>`
   - Default: `*`
   - Example: `set -g _biome_mask_char 'x'`
 
+- `_biome_filename`
+  - Sets the filename used for biome variables
+  - Default: `.biome`
+  - Example: `set -g _biome_filename .env`
+
 
 Contributing
 ------------

@@ -1,5 +1,5 @@
 function _biome_enter -a path
-  set biome $path/.biome
+  set biome $path/$_biome_filename
   if [ -r $biome ]
     if [ (sha1sum $biome) != "$_biome_hash" ]
 

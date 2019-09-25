@@ -1,14 +1,18 @@
 if not set -q _biome_mask_char; set -g _biome_mask_char '*'; end
+if not set -q _biome_filename; set -g _biome_filename '.biome'; end
 
 function _biome --on-event fish_prompt
-  if ! string match -qr "^$_biome_loaded" "$PWD"
+
+  # If PWD is not the current biome or a subdirectory of it, then exit biome
+  if not string match -qr "^$_biome_loaded" "$PWD"
     biome exit
   end
 
   set path $PWD
 
+  # Recursively search parent folders
   while [ "$path" != '/' ]
-    if [ -r $path/.biome ]
+    if [ -r $path/$_biome_filename ]
       biome enter $path
       break
     else
