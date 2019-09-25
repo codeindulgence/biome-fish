@@ -132,4 +132,18 @@ Exiting biome: myproject
 - APP_SECRET: **********************0003
 ```
 
+
+Configure
+---------
+
+The following options can be changed using `set -g <option> <value>`
+
+- `_biome_mask_char`
+  - Sets the character used to mask sensitive values. Want something cool?
+    Consider [Nerd Fonts][2]
+  - Default: `*`
+  - Example: `set -g _biome_mask_char 'x'`
+
+
 [1]: https://github.com/jorgebucaran/fisher
+[2]: https://www.nerdfonts.com/

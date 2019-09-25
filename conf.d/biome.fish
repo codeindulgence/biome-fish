@@ -1,3 +1,5 @@
+if not set -q _biome_mask_char; set -g _biome_mask_char '*'; end
+
 function _biome --on-event fish_prompt
   if ! string match -qr "^$_biome_loaded" "$PWD"
     biome exit
@@ -29,12 +31,11 @@ function _biome_is_secret
 end
 
 function _biome_mask
-  set mask_char '*'
   set length (string length "$argv")
   set reveal_length 4
 
   if [ $length -le $reveal_length ]
-    echo (string repeat -n $length $mask_char)
+    echo (string repeat -n $length $_biome_mask_char)
     return
   end
 
@@ -43,7 +44,7 @@ function _biome_mask
     set mask_length $reveal_length
     set reveal_length (math $length - $mask_length)
   end
-  set masked_string (string repeat -n $mask_length $mask_char)
+  set masked_string (string repeat -n $mask_length $_biome_mask_char)
   set reveal_string (string sub -s -$reveal_length $argv)
   echo $masked_string$reveal_string
 end
