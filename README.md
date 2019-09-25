@@ -3,6 +3,9 @@ Biome: Fish Edition
 
 Manage isolated environment variables
 
+- [Install](#installation)
+- [Usage](#usage)
+- [Configure](#configure)
 
 Installation
 ------------
@@ -156,7 +159,7 @@ Contributing
 
 Credits
 -------
-[Nick Butler](https://www.codeindulgence.com) <nick@codeindulgence.com>
+[Nick Butler](https://github.com/codeindulgence)
 
 
 [1]: https://github.com/jorgebucaran/fisher
