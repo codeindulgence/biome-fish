@@ -176,6 +176,13 @@ The following options can be changed using `set -g <option> <value>`
     cd ~/myproject
     ```
 
+- `_biome_gpg_key`
+  - Specify a GPG key to encrypt/decrypt values. Useful if you want to sync
+  your biomes e.g. using Dropbox. Set it to anything that you can pass as a
+  recipient to `gpg`.
+  - Default: (none)
+  - Example: `set -g _biome_gpg_key mykey`
+
 
 Contributing
 ------------
