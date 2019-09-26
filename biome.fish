@@ -1,16 +1,15 @@
-function biome -a direction path
+function biome -a command path
 
   if [ -z $path ]
     set path $PWD
   end
 
-  if test "$direction" = "enter"
-    _biome_enter $path
-  end
+  set func "_biome_$command"
 
-
-  if test "$direction" = "exit"
-    _biome_exit
+  if type -q $func;
+    $func $path
+  else
+    echo Unknown command: $command
   end
 
 end
