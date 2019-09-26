@@ -164,6 +164,18 @@ The following options can be changed using `set -g <option> <value>`
   - Default: `.biome`
   - Example: `set -g _biome_filename .env`
 
+- `-biome_prefix`
+  - Sets a prefix for where .biome files are stored. When set checks for .biome
+  files will be made in this path. That way you can keep all your dotfiles in
+  one place and manage them with your other dotfiles.
+  - Default: (nothing)
+  - Example:
+    ```sh
+    set -g _biome_prefix ~/.config/biomes/
+    echo "MYPREFIXVAR=myprefixvalue" > ~/.config/biomes/myproject.biome
+    cd ~/myproject
+    ```
+
 
 Contributing
 ------------

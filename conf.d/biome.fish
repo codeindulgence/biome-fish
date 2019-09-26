@@ -1,6 +1,7 @@
 if not set -q _biome_auto; set -g _biome_auto true; end
 if not set -q _biome_mask_char; set -g _biome_mask_char '*'; end
 if not set -q _biome_filename; set -g _biome_filename '.biome'; end
+if not set -q _biome_prefix; set -g _biome_prefix ''; end
 
 function _biome --on-event fish_prompt
 

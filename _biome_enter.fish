@@ -1,9 +1,16 @@
 function _biome_enter -a path
-  set biome $path/$_biome_filename
+  set biome_name (basename $path)
+
+  if [ -n "$_biome_prefix" ]
+    set biome $_biome_prefix/$biome_name$_biome_filename
+  else
+    set biome $path/$_biome_filename
+  end
+
   if [ -r $biome ]
     if [ (sha1sum $biome) != "$_biome_hash" ]
 
-      echo Entering biome: (basename $path)
+      echo Entering biome: $biome_name
 
       cat $biome | while read line
         set line (string split '=' $line)
@@ -45,7 +52,7 @@ function _biome_enter -a path
       end
 
       set -g _biome_loaded $path
-      set -g _biome_name (basename $path)
+      set -g _biome_name $biome_name
       set -g _biome_hash (sha1sum $biome)
     end
   end
