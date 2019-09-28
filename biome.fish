@@ -1,7 +1,11 @@
 function biome -a command path
 
-  if [ -z $path ]
+  if [ -z "$path" ]
     set path $PWD
+  end
+
+  if [ -z  "$command" ]
+    set command list
   end
 
   set func "_biome_$command"
