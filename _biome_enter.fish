@@ -33,22 +33,11 @@ function _biome_enter -a path
         # Set the actual variable!
         set -gx $vname $new_var
 
-        # Handle sensitive variables
-        if _biome_is_secret $vname
-          set secret true
-          set new_var (_biome_mask $new_var)
-        else
-          set secret false
-        end
-
         if [ -n "$old_var" ]
-          if $secret
-            set old_var (_biome_mask $old_var)
-          end
-          _red "- $vname: $old_var"
+          _red "- $vname: "(_biome_mask $vname $old_var)
         end
 
-        _green "+ $vname: $new_var"
+          _green "- $vname: "(_biome_mask $vname $new_var)
       end
 
       set -g _biome_loaded $path

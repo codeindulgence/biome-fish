@@ -40,8 +40,14 @@ function _biome_is_secret
   string match -iqr '.*key|pass|secret.*' $argv
 end
 
-function _biome_mask
-  set length (string length "$argv")
+function _biome_mask -a vname var
+  _biome_is_secret $vname
+  if [ $status -eq 1 ]
+    echo $var
+    return
+  end
+
+  set length (string length "$var")
   set reveal_length 4
 
   if [ $length -le $reveal_length ]
@@ -55,6 +61,6 @@ function _biome_mask
     set reveal_length (math $length - $mask_length)
   end
   set masked_string (string repeat -n $mask_length $_biome_mask_char)
-  set reveal_string (string sub -s -$reveal_length $argv)
+  set reveal_string (string sub -s -$reveal_length $var)
   echo $masked_string$reveal_string
 end
