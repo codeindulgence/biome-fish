@@ -13,6 +13,10 @@ function _biome_enter -a path
       echo Entering biome: $biome_name
 
       cat $biome | while read line
+        if [ (string sub -s 1 -l 1 $line) = '#' ]
+          continue
+        end
+
         set line (string split '=' $line)
 
         # Remove `export` statement if it is present
