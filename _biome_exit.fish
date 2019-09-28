@@ -39,4 +39,5 @@ function _biome_exit
   set -e _biome_loaded
   set -e _biome_name
   set -e _biome_hash
+  set -e _biome_vnames
 end
