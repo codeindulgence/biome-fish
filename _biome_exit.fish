@@ -14,21 +14,10 @@ function _biome_exit
       continue
     end
 
-    # Handle sensitive variables
-    if _biome_is_secret $vname
-      set secret true
-      set cur_var (_biome_mask $cur_var)
-    else
-      set secret false
-    end
-
-    _red "- $vname: $cur_var"
+    _red "- $vname: "(_biome_mask $vname $cur_var)
     if [ -n $old_var ]
       set -gx $vname $old_var
-      if $secret
-        set old_var (_biome_mask $old_var)
-      end
-      _green "+ $vname: $old_var"
+      _green "- $vname: "(_biome_mask $vname $old_var)
     else
       set -e $vname
     end
