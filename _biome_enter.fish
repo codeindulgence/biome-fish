@@ -1,4 +1,5 @@
-function _biome_enter -a path
+# Defined in /var/folders/gg/7kd96zf934bbjgd1v7tq4hzc0000gn/T//fish.JV3wcb/_biome_enter.fish @ line 2
+function _biome_enter --argument path
   set biome_name (basename $path)
 
   if [ -n "$_biome_prefix" ]
@@ -17,7 +18,7 @@ function _biome_enter -a path
           continue
         end
 
-        set line (string split '=' $line)
+        set line (string split -m 1 '=' $line)
 
         # Remove `export` statement if it is present
         set line (string replace 'export ' '' $line)
