@@ -37,7 +37,7 @@ function _green; _biome_color green "$argv"; end
 function _red;   _biome_color red   "$argv"; end
 
 function _biome_is_secret
-  string match -iqr '.*key|pass|secret.*' $argv
+  string match -iqr '.*(key|pass|secret|pwd|psw).*' $argv
 end
 
 function _biome_mask -a vname var
