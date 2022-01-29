@@ -8,7 +8,7 @@ function _biome_enter --argument path
   end
 
   if [ -r $biome ]
-    if [ (sha1sum $biome) != "$_biome_hash" ]
+    if [ (shasum $biome) != "$_biome_hash" ]
 
       echo Entering biome: $biome_name
 
@@ -46,7 +46,7 @@ function _biome_enter --argument path
 
       set -g _biome_loaded $path
       set -g _biome_name $biome_name
-      set -g _biome_hash (sha1sum $biome)
+      set -g _biome_hash (shasum $biome)
     end
   end
 end
